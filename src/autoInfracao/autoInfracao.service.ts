@@ -1,27 +1,27 @@
-import {Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class AutoInfracaoService {
-    constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
-    async getExemploCaso() {
-        return this.prisma.exemploCaso.findMany();
-    }
+  async getExemploCaso() {
+    return this.prisma.infracao.findMany();
+  }
 
-    async getAutosNaoDespachados() {
-        const autosNaoDespachados = await this.prisma.autoInfracao.findMany({
-        where: {
-            Despachado: false,
-        }});
-        return autosNaoDespachados;
-    }
+  // async getAutosNaoDespachados() {
+  //     const autosNaoDespachados = await this.prisma.autoInfracao.findMany({
+  //     where: {
+  //         Despachado: false,
+  //     }});
+  //     return autosNaoDespachados;
+  // }
 
-    // async createAutoInfracao(data: any) {
-    //     return this.prisma.AutoInfracao.create({
-    //         data: {
-    //             ...data,
-    //         },
-    //     });
-    // }
+  // async createAutoInfracao(data: any) {
+  //     return this.prisma.AutoInfracao.create({
+  //         data: {
+  //             ...data,
+  //         },
+  //     });
+  // }
 }
